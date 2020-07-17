@@ -67,21 +67,22 @@
 
                                     while($row = mysqli_fetch_assoc($update_query)){
                                         ?>
-                                        <div style="border: 1px solid lightgray; padding: 2px;">
+                                        <div style="border: 1px solid lightgray; ">
                                             <!-- <span style="color: red; left: 100%; top: 0; border: 1px solid lightred; background: lightpink;">Close</span> -->
-                                        <div class="form-group">
                                             <form action="" method="post">
-                                            <label for="cat_title">Edit Category</label>
-                                            <?php   
-                                                $cat_title = $row['cat_title'];
-                                                $cat_id = $row['id'];
-                                            ?>
-                                            <input type="text" name="cat_title" id="cat_title" class="form-control" value="<?php if(isset($cat_title)){echo $cat_title;} ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <input class="btn btn-primary" type="submit" name="update_category" id="submit" value="Update Category">
-                                            </div>
-                                        </div>
+                                                <div class="form-group" style="margin: 5px;">
+                                                    <label for="cat_title">Edit Category</label>
+                                                    <?php   
+                                                        $cat_title = $row['cat_title'];
+                                                        $cat_id = $row['id'];
+                                                    ?>
+                                                    <input type="text" name="cat_title" id="cat_title" class="form-control" value="<?php if(isset($cat_title)){echo $cat_title;} ?>">
+                                                </div>
+                                                <div class="form-group" style="margin: 5px;">
+                                                    <input class="btn btn-primary" type="submit" name="update_category" id="submit" value="Update Category">
+                                                </div>
+                                            </form>
+                                            
                                         </div>
                                     <?php 
                                     }}
@@ -105,7 +106,6 @@
 
                                     ?>
                                
-                            </form>
                         </div>
 
                         <div class="col-xs-6">
