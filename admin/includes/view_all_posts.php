@@ -38,10 +38,11 @@ while ($row = mysqli_fetch_assoc($select_posts)) {
     echo '<td>' . $post_title . '</td>';
     echo '<td>' . $post_category_id . '</td>';
     echo '<td>' . $post_status . '</td>';
-    echo '<td><img alt="post photo" style="max-width: 100px;" src="' . $post_image . '"></td>';
+    echo '<td><img alt="post photo" style="max-width: 100px;" src="../images/' . $post_image . '"></td>';
     echo '<td>' . $post_tags . '</td>';
     echo '<td>' . $post_comment_count . '</td>';
     echo '<td>' . $post_date . '</td>';
+    echo '<td><a href="posts.php?delete='.$post_id.'">Delete</a></td>';
     echo '</tr>';
 }
 
@@ -59,3 +60,18 @@ while ($row = mysqli_fetch_assoc($select_posts)) {
         </tr> -->
     </tbody>
 </table>
+
+<?php 
+    if(isset($_GET['delete'])){
+        $delete_post_id = $_GET['delete'];
+
+        $query = 'DELETE FROM posts WHERE post_id ='.$delete_post_id;
+        $delete_query = mysqli_query($connection, $query);
+
+        confirm($delete_query);
+
+        header("location: view_all_posts.php");
+    }
+
+
+?>
