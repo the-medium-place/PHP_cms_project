@@ -28,7 +28,6 @@ if (isset($_POST['create_post'])) {
     confirm($create_post_query);
 
 }
-
 ?>
 
 <form action="" method="post" enctype="multipart/form-data">
@@ -39,8 +38,26 @@ if (isset($_POST['create_post'])) {
     </div>
 
     <div class="form-group">
-        <label for="post_category_id">Post Category</label>
-        <input type="text" name="post_category_id" class="form-control">
+    <select name="post_category_id" id="">
+    <?php
+    $query = "SELECT * FROM categories";
+    $update_query = mysqli_query($connection, $query);
+    
+    confirm($update_query);
+    
+    while ($row = mysqli_fetch_assoc($update_query)) {
+    
+        $cat_id = $row['id'];
+        $cat_title = $row['cat_title'];
+        echo "<option value='" . $cat_id . "'>" . $cat_title . "</option>";
+    
+    }
+
+
+    ?>
+    </select>
+        <!-- <label for="post_category_id">Post Category</label>
+        <input type="text" name="post_category_id" class="form-control"> -->
     </div>
 
     <div class="form-group">

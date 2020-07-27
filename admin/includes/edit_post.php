@@ -128,6 +128,6 @@ while ($row = mysqli_fetch_assoc($update_query)) {
     </div>
 
     <div class="form-grop">
-        <input type="submit" value="Publish" class="btn btn-primary" name="update_post">
+        <input type="submit" value="Update" class="btn btn-primary" name="update_post">
     </div>
 </form>

@@ -36,7 +36,18 @@ while ($row = mysqli_fetch_assoc($select_posts)) {
     echo '<td>' . $post_id . '</td>';
     echo '<td>' . $post_author . '</td>';
     echo '<td>' . $post_title . '</td>';
-    echo '<td>' . $post_category_id . '</td>';
+
+    // GET CATEGORY NAME FOR TABLE
+
+    $cat_query = "SELECT * FROM categories WHERE id={$post_category_id}";
+    $cat_id_query = mysqli_query($connection, $cat_query);
+
+    while ($row = mysqli_fetch_assoc($cat_id_query)){
+        $cat_id = $row['id'];
+        $cat_title = $row['cat_title'];
+    }
+
+    echo '<td>' . $cat_title . '</td>';
     echo '<td>' . $post_status . '</td>';
     echo '<td><img alt="post photo" style="max-width: 100px;" src="../images/' . $post_image . '"></td>';
     echo '<td>' . $post_tags . '</td>';
