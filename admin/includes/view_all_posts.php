@@ -42,36 +42,26 @@ while ($row = mysqli_fetch_assoc($select_posts)) {
     echo '<td>' . $post_tags . '</td>';
     echo '<td>' . $post_comment_count . '</td>';
     echo '<td>' . $post_date . '</td>';
-    echo '<td><a href="posts.php?delete='.$post_id.'">Delete</a></td>';
+    echo '<td><a href="posts.php?source=edit_post&p_id=' . $post_id . '">Edit</a></td>';
+    echo '<td><a href="posts.php?delete=' . $post_id . '">Delete</a></td>';
     echo '</tr>';
 }
 
 ?>
-        <!-- <tr>
-        <td>10</td>
-        <td>Author</td>
-        <td>Bootstrap Framework</td>
-        <td>Bootstrap</td>
-        <td>Status</td>
-        <td>Image</td>
-        <td>Tags</td>
-        <td>Comments@</td>
-        <td>Date</td>
-        </tr> -->
+
     </tbody>
 </table>
 
-<?php 
-    if(isset($_GET['delete'])){
-        $delete_post_id = $_GET['delete'];
+<?php
+if (isset($_GET['delete'])) {
+    $delete_post_id = $_GET['delete'];
 
-        $query = 'DELETE FROM posts WHERE post_id ='.$delete_post_id;
-        $delete_query = mysqli_query($connection, $query);
+    $query = 'DELETE FROM posts WHERE post_id =' . $delete_post_id;
+    $delete_query = mysqli_query($connection, $query);
 
-        confirm($delete_query);
+    confirm($delete_query);
 
-        header("location: view_all_posts.php");
-    }
-
+    header("location: view_all_posts.php");
+}
 
 ?>
