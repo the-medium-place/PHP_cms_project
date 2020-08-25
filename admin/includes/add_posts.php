@@ -13,14 +13,14 @@ if (isset($_POST['create_post'])) {
     $post_tags = $_POST['post_tags'];
     $post_content = $_POST['post_content'];
     $post_date = date('d-m-y');
-    $post_comment_count = 4;
+    // $post_comment_count = 4;
 
     // SAVE AND MOVE UPLOADED FILE TO IMAGE DIRECTORY
     move_uploaded_file($post_image_temp, "../images/$post_image");
 
     // CREATE SQL QUERY
-    $query = "INSERT INTO posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status)";
-    $query .= "VALUES ('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}','{$post_status}')";
+    $query = "INSERT INTO posts (post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status, post_comment_count)";
+    $query .= "VALUES ('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}','{$post_status}', 0)";
 
     // SEND QUERY TO DATABASE
     $create_post_query = mysqli_query($connection, $query);
@@ -67,7 +67,11 @@ if (isset($_POST['create_post'])) {
 
     <div class="form-group">
         <label for="post_status">Post Status</label>
-        <input type="text" name="post_status" class="form-control">
+        <!-- <input type="text" name="post_status" class="form-control"> -->
+        <select name="post_status">
+        <option>Published</option>
+        <option>Draft</option>
+        </select>
     </div>
 
     <div class="form-group">
@@ -76,7 +80,7 @@ if (isset($_POST['create_post'])) {
     </div>
 
     <div class="form-group">
-        <label for="post_tags">Post Tags</label>
+        <label for="post_tags">Post Tags (separate with commas)</label>
         <input type="text" name="post_tags" class="form-control">
     </div>
 
