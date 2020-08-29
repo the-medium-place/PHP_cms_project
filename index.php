@@ -19,7 +19,7 @@
                 <?php
 
 // GET POST INFO FROM DATABASE
-$query = "SELECT * FROM posts";
+$query = "SELECT * FROM posts WHERE post_status = 'published'";
 $select_all_posts_query = mysqli_query($connection, $query);
 while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
     $post_id = $row['post_id'];

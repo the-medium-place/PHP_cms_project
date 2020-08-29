@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['create_post'])) {
+if (isset($_POST['create_user'])) {
 
     $post_title = $_POST['title'];
     $post_author = $_POST['post_author'];
@@ -22,9 +22,9 @@ if (isset($_POST['create_post'])) {
     $query .= "VALUES ('{$post_category_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}','{$post_status}', '{$post_comment_count}')";
 
     // SEND QUERY TO DATABASE
-    $create_post_query = mysqli_query($connection, $query);
+    $create_user_query = mysqli_query($connection, $query);
 
-    confirm($create_post_query);
+    confirm($create_user_query);
 
 }
 ?>
@@ -90,6 +90,6 @@ if (isset($_POST['create_post'])) {
     </div>
 
     <div class="form-grop">
-        <input type="submit" value="Publish" class="btn btn-primary" name="create_post">
+        <input type="submit" value="Publish" class="btn btn-primary" name="create_user">
     </div>
 </form>

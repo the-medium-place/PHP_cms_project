@@ -72,7 +72,7 @@ if (isset($_GET['delete'])) {
     echo $query;
     confirm($delete_query);
 
-    header("location: view_all_posts.php");
+    header("location: posts.php");
 }
 
 ?>
