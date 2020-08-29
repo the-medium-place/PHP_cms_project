@@ -9,6 +9,7 @@
             <th>Email</th>
             <th>Created Date</th>
             <th>Role</th>
+            <th>Assign Role</th>
             <!-- <th>Approve</th>
             <th>Deny</th>
             <th>Edit</th>
@@ -36,7 +37,11 @@ while ($row = mysqli_fetch_assoc($select_users)) {
 
     echo '<tr>';
     echo '<td>' . $user_id . '</td>';
-    echo '<td>' . $username . '</td>';
+    if($user_image != ''){
+        echo '<td>' . $username .'<br><img alt="user photo" style="max-width: 100px;" src="../images/' . $user_image . '"></td>';
+    } else {
+        echo '<td>' . $username . '</td>';
+    }
     echo '<td>' . $user_firstname . '</td>';   
     echo '<td>' . $user_lastname . '</td>';
     echo '<td>' . $user_email . '</td>';
@@ -55,9 +60,8 @@ while ($row = mysqli_fetch_assoc($select_users)) {
     
     // echo '<td><a href="../post.php?p_id='.$post_id.'">' . $post_title . '</a></td>';
     // echo '<td>' . $comment_date . '</td>';
-    // echo '<td><a href="users.php?approve=' . $user_id . '">Approve</a></td>';
-    // echo '<td><a href="users.php?deny=' . $user_id . '">Deny</a></td>';
-    echo '<td><a href="users.php?delete=' . $user_id . '">Delete</a></td>';
+    echo '<td class="text-center"><a href="users.php?change_to_admin=' . $user_id . '"><button class="btn btn-primary" >Admin</button></a><hr><a href="users.php?change_to_sub=' . $user_id . '"><button class="btn btn-primary" >Subscriber</button></a></td></td>';
+    echo '<td class="text-center"><a href="users.php?source=edit_user&u_id='.$user_id.'"><button class="btn btn-primary">Edit</button></a><hr><a href="users.php?delete=' . $user_id . '"><button class="btn btn-danger">Delete</button></a></td>';
     echo '</tr>';
 }
 
@@ -67,27 +71,27 @@ while ($row = mysqli_fetch_assoc($select_users)) {
 
 <?php
 
-// if (isset($_GET['deny'])) {
-//     $deny_comment_id = $_GET['deny'];
+if (isset($_GET['change_to_admin'])) {
+    $make_admin_user_id = $_GET['change_to_admin'];
 
-//     $query = 'UPDATE comments SET comment_status = "denied" WHERE comment_id =' . $deny_comment_id;
-//     $deny_query = mysqli_query($connection, $query);
+    $query = 'UPDATE users SET user_role = "Admin" WHERE user_id =' . $make_admin_user_id;
+    $make_admin_query = mysqli_query($connection, $query);
 
-//     confirm($deny_query);
+    confirm($make_admin_query);
 
-//     header("location: comments.php");
-// }
+    header("location: users.php");
+}
 
-// if (isset($_GET['approve'])) {
-//     $approve_comment_id = $_GET['approve'];
+if (isset($_GET['change_to_sub'])) {
+    $make_sub_user_id = $_GET['change_to_sub'];
 
-//     $query = 'UPDATE comments SET comment_status = "approved" WHERE comment_id =' . $approve_comment_id;
-//     $approve_query = mysqli_query($connection, $query);
+    $query = 'UPDATE users SET user_role = "Subscriber" WHERE user_id =' . $make_sub_user_id;
+    $make_sub_query = mysqli_query($connection, $query);
 
-//     confirm($approve_query);
+    confirm($make_sub_query);
 
-//     header("location: comments.php");
-// }
+    header("location: users.php");
+}
 
 
 if (isset($_GET['delete'])) {

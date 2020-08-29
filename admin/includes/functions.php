@@ -53,8 +53,8 @@ function findAllCategories(){
         echo "<td>{$cat_id}</td>";
         echo "<td>{$cat_title}</td>";
         // CREATE DELETE LINK FOR $_GET SUPERGLOBAL
-        echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
-        echo "<td><a href='categories.php?update={$cat_id}'>Edit</a></td>";
+        echo "<td class='text-center'><a href='categories.php?update={$cat_id}'><button class='btn btn-primary'>Edit</button></a></td>";
+        echo "<td class='text-center'><a href='categories.php?delete={$cat_id}'><button class='btn btn-danger'>Delete</button></a></td>";
         echo "</tr>";
     }
 
