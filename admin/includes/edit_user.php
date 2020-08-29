@@ -92,9 +92,14 @@ if (isset($_POST['update_user'])) {
     <label for="user_role">Role</label>
 
     <select name="user_role" id="">
-        <option value="Subscriber">Select Role...</option>
-        <option value="Admin">Admin</option>
-        <option value="Subscriber">Subscriber</option>
+        <?php echo '<option value="'.$user_role.'">'.$user_role.'</option>'; 
+        if($user_role == 'Admin'){
+            echo '<option value="Subscriber">Change to Subscriber</option>';
+        } else {
+            echo '<option value="Admin">Change to Admin</option>';
+        }
+        ?>
+
     </select>
     </div>
 
