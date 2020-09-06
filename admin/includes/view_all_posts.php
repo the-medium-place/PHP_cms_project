@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_assoc($select_posts)) {
     echo '<tr>';
     echo '<td>' . $post_id . '</td>';
     echo '<td>' . $post_author . '</td>';
-    echo '<td>' . $post_title . '</td>';
+    echo '<td><a href="../post.php?p_id='.$post_id.'">' . $post_title . '</a></td>';
 
     // GET CATEGORY NAME FOR TABLE
 
@@ -53,8 +53,8 @@ while ($row = mysqli_fetch_assoc($select_posts)) {
     echo '<td>' . $post_tags . '</td>';
     echo '<td>' . $post_comment_count . '</td>';
     echo '<td>' . $post_date . '</td>';
-    echo '<td><a href="posts.php?source=edit_post&p_id=' . $post_id . '"><button class="btn btn-primary">Edit</button></a></td>';
-    echo '<td><a href="posts.php?delete=' . $post_id . '"><button class="btn btn-danger">Delete</button></a></td>';
+    echo '<td><a href="posts.php?source=edit_post&p_id=' . $post_id . '"><button class="btn btn-primary btn-sm">Edit</button></a></td>';
+    echo '<td><a href="posts.php?delete=' . $post_id . '"><button class="btn btn-danger btn-sm">Delete</button></a></td>';
     echo '</tr>';
 }
 

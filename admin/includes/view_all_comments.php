@@ -50,9 +50,9 @@ while ($row = mysqli_fetch_assoc($select_comments)) {
     
     echo '<td><a href="../post.php?p_id='.$post_id.'">' . $post_title . '</a></td>';
     echo '<td>' . $comment_date . '</td>';
-    echo '<td><a href="comments.php?approve=' . $comment_id . '"><button class="btn btn-success">Approve</button></a></td>';
-    echo '<td><a href="comments.php?deny=' . $comment_id . '"><button class="btn btn-warning">Deny</button></a></td>';
-    echo '<td><a href="comments.php?delete=' . $comment_id . '"><button class="btn btn-danger">Delete</button></a></td>';
+    echo '<td><a href="comments.php?approve=' . $comment_id . '"><button class="btn btn-success btn-sm">Approve</button></a></td>';
+    echo '<td><a href="comments.php?deny=' . $comment_id . '"><button class="btn btn-warning btn-sm">Deny</button></a></td>';
+    echo '<td><a href="comments.php?delete=' . $comment_id . '"><button class="btn btn-danger btn-sm">Delete</button></a></td>';
     echo '</tr>';
 }
 

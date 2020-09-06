@@ -60,8 +60,8 @@ while ($row = mysqli_fetch_assoc($select_users)) {
     
     // echo '<td><a href="../post.php?p_id='.$post_id.'">' . $post_title . '</a></td>';
     // echo '<td>' . $comment_date . '</td>';
-    echo '<td class="text-center"><a href="users.php?change_to_admin=' . $user_id . '"><button class="btn btn-primary" >Admin</button></a><hr><a href="users.php?change_to_sub=' . $user_id . '"><button class="btn btn-primary" >Subscriber</button></a></td></td>';
-    echo '<td class="text-center"><a href="users.php?source=edit_user&u_id='.$user_id.'"><button class="btn btn-primary">Edit</button></a><hr><a href="users.php?delete=' . $user_id . '"><button class="btn btn-danger">Delete</button></a></td>';
+    echo '<td class="text-center"><a href="users.php?change_to_admin=' . $user_id . '"><button class="btn btn-primary btn-sm" >Admin</button></a><hr><a href="users.php?change_to_sub=' . $user_id . '"><button class="btn btn-primary btn-sm" >Subscriber</button></a></td></td>';
+    echo '<td class="text-center"><a href="users.php?source=edit_user&u_id='.$user_id.'"><button class="btn btn-primary btn-sm">Edit</button></a><hr><a href="users.php?delete=' . $user_id . '"><button class="btn btn-danger btn-sm">Delete</button></a></td>';
     echo '</tr>';
 }
 

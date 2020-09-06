@@ -30,9 +30,19 @@ CREATE TABLE posts (
     post_content TEXT,
     post_comment_count INT,
     post_date DATE
-)
+);
 
 CREATE TABLE categories (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     cat_title VARCHAR(100)
-)
+);
+
+CREATE TABLE comments (
+    comment_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    comment_post_id INT,
+    comment_author VARCHAR(100),
+    comment_content TEXT,
+    comment_email VARCHAR(100),
+    comment_status VARCHAR(100),
+    comment_date DATE
+);
