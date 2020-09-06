@@ -4,7 +4,6 @@
 <?php
 
     $username = $_POST['username'];
-    $user_password = $_POST['user_password'];
 
     $query = "SELECT username, user_password FROM users ";
     $query .= "WHERE BINARY username = '$username' ";
@@ -15,9 +14,8 @@
     $loggedIn = false;
 
     while ($row = mysqli_fetch_assoc($user_query)){
-        $stored_password = $row['user_password'];
 
-        if (password_verify($user_password, $stored_password)){
+        if (password_verify($_POST['user_password'], $row['user_password'])){
             $loggedIn = true;
         } 
     }
