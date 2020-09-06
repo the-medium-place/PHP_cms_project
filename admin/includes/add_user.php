@@ -6,20 +6,17 @@ if (isset($_POST['create_user'])) {
     $user_firstname = $_POST['user_firstname'];
     $user_lastname = $_POST['user_lastname'];
     $user_email = $_POST['user_email'];
-
     $user_image = $_FILES['user_image']['name'];
     $user_image_temp = $_FILES['user_image']['tmp_name'];
-
-    $user_password = $_POST['user_password'];
+    $user_password_hash = password_hash($_POST['user_password'], PASSWORD_BCRYPT);
     $user_role = $_POST['user_role'];
-    // $user_comment_count = 0;
 
     // SAVE AND MOVE UPLOADED FILE TO IMAGE DIRECTORY
     move_uploaded_file($user_image_temp, "../images/$user_image");
 
     // CREATE SQL QUERY
     $query = "INSERT INTO users (username, user_firstname, user_lastname, user_email, user_image, user_password, user_role, user_createdon, randSalt)";
-    $query .= "VALUES ('{$username}', '{$user_firstname}', '{$user_lastname}','{$user_email}', '{$user_image}','{$user_password}', '{$user_role}', now(), '')";
+    $query .= "VALUES ('{$username}', '{$user_firstname}', '{$user_lastname}','{$user_email}', '{$user_image}','{$user_password_hash}', '{$user_role}', now(), '')";
 
     // SEND QUERY TO DATABASE
     $create_user_query = mysqli_query($connection, $query);
