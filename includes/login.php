@@ -4,22 +4,37 @@
 <?php
 
     $username = $_POST['username'];
-    $user_password = $_POST['user_password'];
 
-    $query = "SELECT * FROM users WHERE username = '$username' AND user_password = '$user_password'";
+    $query = "SELECT username, user_password, user_firstname, user_id FROM users ";
+    $query .= "WHERE BINARY username = '$username' ";
+    $query .= "LIMIT 1;";
 
     $user_query = mysqli_query($connection, $query);
 
     $loggedIn = false;
 
     while ($row = mysqli_fetch_assoc($user_query)){
-        $loggedIn = true;
-        echo 'logged in';
+
+        if (password_verify($_POST['user_password'], $row['user_password'])){
+            echo '<br><center><h1>Logged in!</h1></center>';
+            session_start();
+            $_SESSION['username'] = $username;
+            $_SESSION['user_firstname'] = $row['user_firstname'];
+            $_SESSION['user_id'] = $row['user_id'];
+            
+            header("location: ../admin");
+
+            $loggedIn = true;
+        } else {
+            echo '<br>No Matching User Info';
+        }
     }
 
-    if(!$loggedIn){
-        echo 'not logged in';
-    }
+    // if(($loggedIn)){
+    //     echo '<br><center><h1>Logged in!</h1></center>';
+    // } else {
+    //     echo '<br>No Matching User Info';
+    // }
 
 ?>
 
