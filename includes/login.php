@@ -5,7 +5,7 @@
 
     $username = $_POST['username'];
 
-    $query = "SELECT username, user_password FROM users ";
+    $query = "SELECT username, user_password, user_firstname FROM users ";
     $query .= "WHERE BINARY username = '$username' ";
     $query .= "LIMIT 1;";
 
@@ -19,6 +19,7 @@
             echo '<br><center><h1>Logged in!</h1></center>';
             session_start();
             $_SESSION['username'] = $username;
+            $_SESSION['user_firstname'] = $row['user_firstname'];
             
             header("location: ../admin");
 
