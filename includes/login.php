@@ -16,15 +16,23 @@
     while ($row = mysqli_fetch_assoc($user_query)){
 
         if (password_verify($_POST['user_password'], $row['user_password'])){
+            echo '<br><center><h1>Logged in!</h1></center>';
+            session_start();
+            $_SESSION['username'] = $username;
+            
+            header("location: ../admin");
+
             $loggedIn = true;
-        } 
+        } else {
+            echo '<br>No Matching User Info';
+        }
     }
 
-    if(($loggedIn)){
-        echo '<br><center><h1>Logged in!</h1></center>';
-    } else {
-        echo '<br>No Matching User Info';
-    }
+    // if(($loggedIn)){
+    //     echo '<br><center><h1>Logged in!</h1></center>';
+    // } else {
+    //     echo '<br>No Matching User Info';
+    // }
 
 ?>
 
