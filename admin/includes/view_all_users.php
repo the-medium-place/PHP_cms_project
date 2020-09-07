@@ -97,19 +97,21 @@ if (isset($_GET['change_to_sub'])) {
 if (isset($_GET['delete'])) {
     $delete_user_id = $_GET['delete'];
 
-    $query = 'DELETE FROM users WHERE user_id =' . $delete_user_id;
-    $delete_query = mysqli_query($connection, $query);
+    if($delete_user_id == $_SESSION['user_id']){
 
+        echo '<p style="color:darkred; background-color: lightpink;>You can\'t delete yourself!';
     
-    confirm($delete_query);
+    } else {
 
-    // $comment_count_query = "UPDATE posts SET post_comment_count = post_comment_count - 1 ";
-    // $comment_count_query .= "WHERE post_id = $comment_post_id";
+        $query = 'DELETE FROM users WHERE user_id =' . $delete_user_id;
+        $delete_query = mysqli_query($connection, $query);
 
-    // $update_comment_count_query = mysqli_query($connection, $comment_count_query);
-    // confirm($update_comment_count_query);
+        
+        confirm($delete_query);
 
-    header("location: users.php");
+        header("location: users.php");
+
+    }
 }
 
 ?>
