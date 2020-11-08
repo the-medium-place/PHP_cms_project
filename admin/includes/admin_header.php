@@ -5,6 +5,22 @@
 <?php include 'functions.php' ?>
 
 
+<?php
+
+    // FILTER USERS BY ROLE
+    if(isset($_SESSION['user_role'])){
+        if($_SESSION['user_role'] !== 'Admin'){
+            header("Location: ../index.php");
+        }
+    } else {
+        header("Location: ../index.php");
+    }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

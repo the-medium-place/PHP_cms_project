@@ -6,10 +6,13 @@
 
 <!-- CHECK FOR SESSION VALUE -->
 <?php
-    if(!($_SESSION['user_firstname'])){
-        header("Location: ../index.php");
-    } 
+    // if(!($_SESSION['user_firstname'])){
+    //     header("Location: ../index.php");
+    // } 
 
+    if(!isset($_SESSION['user_firstname'])){
+        header("Location: ../index.php");
+    }
 ?>
 
 

@@ -1,25 +1,33 @@
+
 <div class="col-md-4">
 
-  <!-- Login Well -->
-    <div class="well">
-        <h4>Login:</h4>
-        <form action="includes/login.php" method="POST" >
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input name="username" type="text" class="form-control" placeholder="Enter Username">
-            </div>  
-            <div class="form-group">
-                <label for="user_password">Password:</label>
-                <input name="user_password" type="password" class="form-control" placeholder="Enter Password">
-            </div>
-            <span class="input-group-btn">
-                <button name = "login" class="btn btn-primary" type="submit">Login</button>
-            </span>
-        </form>
-        <!-- /.input-group -->
-</div>
+<!-- Login Well -->
+<?php 
 
 
+if(!($_SESSION['username'])){
+    echo '<div class="well">
+            <h4>Login:</h4>
+            <form action="includes/login.php" method="POST" >
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input name="username" type="text" class="form-control" placeholder="Enter Username">
+                </div>  
+                <div class="form-group">
+                    <label for="user_password">Password:</label>
+                    <input name="user_password" type="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <span class="input-group-btn">
+                    <button name = "login" class="btn btn-primary" type="submit">Login</button>
+                </span>
+            </form>
+            <!-- /.input-group -->
+        </div>';
+    } else {
+        echo '<div class="well text-center">hello logged in user';
+        echo '<br> <a href="./includes/logout.php">Logout</a></div>';
+    }
+?>
 
 <!-- Blog Search Well -->
     <div class="well">

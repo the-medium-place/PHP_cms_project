@@ -3,11 +3,12 @@
 // set database info as variables
 $db['db_host'] = 'localhost';
 $db['db_user'] = 'root';
+
 // PASSWORD FOR WORKING ON LINUX COMP
-// $db['db_pass'] = 'password';
+$db['db_pass'] = 'password';
 
 // PASSWORD FOR WORKING ON MAC COMP
-$db['db_pass'] = '';
+// $db['db_pass'] = '';
 
 $db['db_name'] = 'cms';
 
