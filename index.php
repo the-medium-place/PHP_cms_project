@@ -1,8 +1,5 @@
 <?php require 'vendor/autoload.php';?>
-<?php
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load()
-?>
+
 <?php include 'includes/db.php' ?>
 
 <!-- Header -->
