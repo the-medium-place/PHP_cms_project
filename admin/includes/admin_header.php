@@ -2,6 +2,7 @@
 <?php session_start(); ?>
 
 <?php include '../includes/db.php' ?>
+<?php include '../includes/dotenv.php' ?>
 <?php include 'functions.php' ?>
 
 

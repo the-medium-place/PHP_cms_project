@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include 'dotenv.php' ?>
 
 
 <!DOCTYPE html>
